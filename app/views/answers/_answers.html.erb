@@ -1,0 +1,19 @@
+<ul class="list-unstyled">
+  <% answers.each do |answer| %>
+    <li class="media mb-3">
+      <div class="media-body">
+        <% if answer.info_id == info %>
+                <div>
+          <p><%= answer.id %></p>
+        </div>
+        <div>
+          <p><%= answer.comment %></p>
+        </div>
+                <div>
+          <p><%= answer.info_id %></p>
+        </div>
+        <% end %>
+      </div>
+    </li>
+  <% end %>
+</ul>

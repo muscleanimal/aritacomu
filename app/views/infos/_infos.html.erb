@@ -1,0 +1,26 @@
+<h1>情報交換サービストップページ</h1>
+<h3>質問一覧</h3>
+<% if infos.any? %>
+  <ul class="list-unstyled">
+    <% infos.each do |info| %>
+        <div class="center">
+            <div class="row center">
+          <div class="mr-3">
+            <p>投稿者:<%= info.user.name %></p>
+          </div>
+            <div class="mr-3">
+            <p>タイトル:<%= info.title %></p>
+          </div>
+          <div class="mr-3">
+            <p>質問内容<%= info.content %><p>
+          </div>
+        <%= link_to '質問詳細', info_path(info) %></li>
+        </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+  
+    <%= link_to '新規質問', new_info_path %></li>
+    

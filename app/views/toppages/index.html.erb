@@ -1,0 +1,72 @@
+<% if logged_in? %>
+  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+    <div class="row center jumbotron  justify-content-between ">
+    <div class="card">
+    <div class="card-header">
+     img
+    </div>
+    <div class="card-body">
+         <i class="far fa-handshake"></i>シェア
+        <div><%= link_to '余ったもの、不用品を交換してものづくり。' , root_path %></div>
+    </div>
+</div>
+    <div class="card">
+    <div class="card-header">
+        img
+    </div>
+    <div class="card-body">
+      <i class="fas fa-assistive-listening-systems"></i>情報交換
+        <div><%= link_to '技術を意見交換して楽しくものづくり。' , infos_path %></div>
+    </div>
+</div>
+
+    <div class="card">
+    <div class="card-header">
+        img
+    </div>
+    <div class="card-body">
+      <i class="fas fa-mortar-pestle"></i>作品公開
+        <div><%= link_to '個人作家でも作品を公開して励みに。' , works_path %></div>
+    </div>
+</div>
+    </div>
+<% else %>
+  <div class="center jumbotron">
+    <div class="text-center">
+      <h1>Welcome to the Arita Comu</h1>
+      <p>有田焼の情報交換サイトです。<br>
+      次世代につなげるための情報交換、作品公開、シェアリングを目的として作られた有田のためのサイト。</p>
+      <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
+    </div>
+  </div>
+    <div class="row center jumbotron  justify-content-between ">
+    <div class="card">
+    <div class="card-header">
+     img
+    </div>
+    <div class="card-body">
+         <i class="far fa-handshake"></i>シェア
+        <div><%= link_to '余ったもの、不用品を交換してものづくり。' , login_path %></div>
+    </div>
+</div>
+    <div class="card">
+    <div class="card-header">
+        img
+    </div>
+    <div class="card-body">
+      <i class="fas fa-assistive-listening-systems"></i>情報交換
+        <div><%= link_to '技術を意見交換して楽しくものづくり。' , login_path %></div>
+    </div>
+</div>
+
+    <div class="card">
+    <div class="card-header">
+        img
+    </div>
+    <div class="card-body">
+      <i class="fas fa-mortar-pestle"></i>作品公開
+        <div><%= link_to '個人作家でも作品を公開して励みに。' , login_path %></div>
+    </div>
+</div>
+    </div>
+<% end %>

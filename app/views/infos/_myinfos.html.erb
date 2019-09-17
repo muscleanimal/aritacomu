@@ -1,0 +1,23 @@
+<% if infos.any? %>
+  <ul class="list-unstyled">
+    <% infos.each do |myinfo| %>
+        <div class="media-body">
+            <div class="row">
+          <div>
+                              <%= link_to '質問詳細', info_path(myinfo) %></li>
+          </div>
+            <div>
+            <%= myinfo.title %>
+          </div>
+          
+          <div>
+            <%= myinfo.content %>
+          </div>
+
+        </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+    

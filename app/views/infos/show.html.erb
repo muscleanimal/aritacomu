@@ -1,0 +1,26 @@
+          <div>
+            <%= @info.user.name %>
+          </div>
+            <div>
+            <%= @info.title %>
+          </div>
+          
+          <div>
+            <%= @info.content %>
+          </div>
+          <% if logged_in? %>
+  <div class="row">
+    <aside class="col-sm-4">
+      <%= form_with(model: @answer, local: true) do |f| %>
+        <div class="form-group">
+          <%= f.text_area :comment, class: 'form-control', rows: 5 %>
+        </div>
+              <%= hidden_field_tag :id, @info.id %>
+        <%= f.submit '回答', class: 'btn btn-primary btn-block' %>
+      <% end %>
+    </aside>
+    <div class="col-sm-8">
+      <%= render 'answers/answers', answers: @answers , info: @info.id %>
+    </div>
+  </div>
+  <% end %>

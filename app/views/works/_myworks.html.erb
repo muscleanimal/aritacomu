@@ -1,0 +1,23 @@
+<% if works.any? %>
+  <ul class="list-unstyled">
+    <% works.each do |mywork| %>
+        <div class="media-body">
+            <div class="row">
+          <div>
+                              <%= link_to '作品詳細', work_path(mywork) %></li>
+          </div>
+            <div>
+            <%= mywork.title %>
+          </div>
+          
+          <div>
+            <%= mywork.content %>
+          </div>
+
+        </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+    

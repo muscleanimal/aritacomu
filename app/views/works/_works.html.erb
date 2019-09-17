@@ -1,0 +1,29 @@
+<h1>作品投稿サービストップページ</h1>
+<h3>作品一覧</h3>
+<% if works.any? %>
+        <div class="container">
+        <div class="row justify-content-between">
+    <% works.each do |work| %>
+              <div class="mt-4 col-md-4">
+              <div class="card">
+    <div class="card-header">
+             <%= link_to 'img', work_path(work) %></li>
+    </div>
+    <div class="card-body">
+          <div class="mr-3">
+            <p>投稿者:<%= work.user.name %></p>
+          </div>
+            <div class="mr-3">
+            <p>タイトル:<%= work.title %></p>
+          </div>
+          <div class="mr-3">
+            <p>作品紹介文：<%= work.content %><p>
+          </div>
+        </div>
+      </div>
+      </div>
+    <% end %>
+          </div>
+      </div>
+<% end %>
+    <%= link_to '作品投稿', new_work_path %></li>

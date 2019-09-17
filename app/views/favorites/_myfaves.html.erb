@@ -1,0 +1,19 @@
+<% if faves.any? %>
+  <ul class="list-unstyled">
+    <% faves.each do |myfave| %>
+        <div class="media-body">
+            <div class="row">
+            <div>
+            <p>作者名:<%= myfave.work.user.name %></p>
+          </div>
+            <div>
+            <p>タイトル:<%= myfave.work.title %></p>
+          </div>
+
+        </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+    

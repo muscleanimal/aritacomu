@@ -1,0 +1,18 @@
+<ul class="list-unstyled">
+  <% mentions.each do |mention| %>
+    <li class="media mb-3">
+      <div class="media-body">
+        <div class="row">
+        <% if mention.work_id == work %>
+                <div class="mr-3">
+          <p>ユーザ名:<%= mention.user.name %></p>
+        </div>
+        <div>
+          <p>コメント:<%= mention.comment %></p>
+        </div>
+        </div>
+        <% end %>
+      </div>
+    </li>
+  <% end %>
+</ul>
