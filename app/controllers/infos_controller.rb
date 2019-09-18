@@ -32,11 +32,16 @@ class InfosController < ApplicationController
   end
 
   def destroy
+    @info=Info.find(params[:id])
     @info.destroy
     flash[:success] = 'メッセージを削除しました。'
     redirect_back(fallback_location: root_path)
   end
 
+  def counts(user)
+    @info = Info.find(params[:id])
+    @count_answers = @info.answers.count
+  end
 
   private
 

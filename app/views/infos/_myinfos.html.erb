@@ -1,23 +1,31 @@
 <% if infos.any? %>
   <ul class="list-unstyled">
     <% infos.each do |myinfo| %>
-        <div class="media-body">
+        <li class="media-body">
             <div class="row">
-          <div>
-                              <%= link_to '質問詳細', info_path(myinfo) %></li>
-          </div>
-            <div>
+  <aside class="col-sm-2">
+    <div>
+img
+    </div>
+  </aside>
+            <div class="col-sm-10">
+              <div>
             <%= myinfo.title %>
           </div>
-          
+          <div class="row">
           <div>
-            <%= myinfo.content %>
+            <%= myinfo.created_at %>
           </div>
 
-        </div>
-        </div>
-      </li>
+    <% if current_user == myinfo.user %>
+    <div class="ml-3 px-5">
+      <%= link_to 'この質問を削除する', myinfo, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } ,class: "btn btn-danger" %>
+      </div>
     <% end %>
+          <p>回答数:<%= answers %></p>
+              </div>
+        </div>
+                          </li>
   </ul>
 <% end %>
-    
+<% end %>

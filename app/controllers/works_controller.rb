@@ -12,7 +12,6 @@ class WorksController < ApplicationController
 
   def show
         @work = Work.find(params[:id])
-        @user = User.find(params[:id])
     if logged_in?
       @mention = current_user.mentions.build  # form_with 用
       @mentions = current_user.mentions.order(id: :desc).page(params[:page])
@@ -24,7 +23,7 @@ class WorksController < ApplicationController
     @work = current_user.works.build(work_params)
     if @work.save
       flash[:success] = '作品を投稿しました。'
-    redirect_to :user
+    redirect_to root_url
     
     else
       @works = current_user.works.order(id: :desc).page(params[:page])
@@ -34,6 +33,7 @@ class WorksController < ApplicationController
   end
 
   def destroy
+    @work=Work.find(params[:id])
     @work.destroy
     flash[:success] = '投稿を削除しました。'
     redirect_back(fallback_location: root_path)

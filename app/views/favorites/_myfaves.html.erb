@@ -9,7 +9,9 @@
             <div>
             <p>タイトル:<%= myfave.work.title %></p>
           </div>
-
+    <div class="ml-3">
+    <%= render 'favorites/navfaves',  work: myfave.work ,user: myfave.user  %>
+        </div>
         </div>
         </div>
       </li>

@@ -5,13 +5,13 @@ class User < ApplicationRecord
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
   has_secure_password
- has_many :answers
- has_many :infos
- has_many :works
- has_many :mentions
- has_many :favorites
- has_many :likes, through: :favorites, source: :work
- has_many :shares 
+ has_many :answers,dependent: :destroy
+ has_many :infos,dependent: :destroy
+ has_many :works, dependent: :destroy
+ has_many :mentions, dependent: :destroy
+ has_many :favorites, dependent: :destroy
+ has_many :likes, through: :favorites, source: :work,dependent: :destroy
+ has_many :shares, dependent: :destroy
    def like(other_work)
       self.favorites.find_or_create_by(work_id: other_work.id)
    end

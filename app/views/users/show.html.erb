@@ -7,6 +7,8 @@
       <div class="card-body">
         <img class="rounded img-fluid" src="<%= gravatar_url(@user, { size: 500 }) %>" alt="">
       </div>
+      <div><p><%= @user.intro %></p></div>
+      <div><%= link_to 'プロフィールを編集する', edit_user_path(@user) %></div>
     </div>
   </aside>
   <div class="col-sm-8">

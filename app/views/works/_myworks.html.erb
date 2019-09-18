@@ -3,21 +3,34 @@
     <% works.each do |mywork| %>
         <div class="media-body">
             <div class="row">
-          <div>
-                              <%= link_to '作品詳細', work_path(mywork) %></li>
-          </div>
-            <div>
+  <aside class="col-sm-2">
+    <div>
+img
+    </div>
+  </aside>
+            <div class="col-sm-10">
+              <div>
             <%= mywork.title %>
           </div>
-          
+          <div class="row">
           <div>
-            <%= mywork.content %>
+            <%= mywork.created_at %>
           </div>
 
-        </div>
-        </div>
-      </li>
+    <% if current_user == mywork.user %>
+    <div class="ml-3 px-5">
+      <%= link_to 'この投稿を削除する', mywork, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } ,class: "btn btn-danger" %>
+      </div>
+                </div>
+                </div>
     <% end %>
+    <div class="ml-3">
+    <%= render 'favorites/favorite',  work: mywork ,user: mywork.user  %>
+        </div>
+        </div>
+        </div>
+    <% end %>
+          </li>
   </ul>
 <% end %>
     

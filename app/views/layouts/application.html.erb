@@ -19,14 +19,17 @@
 
   <body>
     <%= render 'layouts/navbar' %>
-
+      <div class="wrapper">
     <div class="container">
       <%= render 'layouts/flash_messages' %>
 
       <%= yield %>
+        </div>
     </div>
   </body>
-  <div class="center-block">
-<%= render 'layouts/footer' %>
-  </div>
+<footer class="fixed-bottom sm-12">
+<p>有田職人総合情報サイト</br>
+Arita Comu
+Copyright ©︎ Arita Comu All Rights Reserved.<p>
+  </footer>
 </html>
