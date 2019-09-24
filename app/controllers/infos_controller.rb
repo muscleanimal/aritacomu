@@ -14,7 +14,7 @@ class InfosController < ApplicationController
       @info = Info.find(params[:id])
     if logged_in?
       @answer = current_user.answers.build  # form_with 用
-      @answers = current_user.answers.order(id: :desc).page(params[:page])
+      @answers = @info.answers.order(id: :desc).page(params[:page])
       
   end
   end
@@ -22,30 +22,30 @@ class InfosController < ApplicationController
   def create
     @info = current_user.infos.build(info_params)
     if @info.save
-      flash[:success] = 'メッセージを投稿しました。'
-      redirect_to root_url
+      flash[:success] = '質問を投稿しました。'
+      redirect_to infos_url(@info.id)
     else
       @infos = current_user.infos.order(id: :desc).page(params[:page])
-      flash.now[:danger] = 'メッセージの投稿に失敗しました。'
-      render 'toppages/index'
+      flash.now[:danger] = '質問の投稿に失敗しました。'
+           redirect_to infos_url(@info.id)
     end
   end
 
   def destroy
     @info=Info.find(params[:id])
     @info.destroy
-    flash[:success] = 'メッセージを削除しました。'
+    flash[:success] = '質問を削除しました。'
     redirect_back(fallback_location: root_path)
   end
 
-  def counts(user)
-    @info = Info.find(params[:id])
-    @count_answers = @info.answers.count
-  end
 
   private
 
   def info_params
-    params.require(:info).permit(:title, :content)
+    params.require(:info).permit(:title, :content, :avatar)
   end
+end
+
+def count
+  self.answers.count
 end

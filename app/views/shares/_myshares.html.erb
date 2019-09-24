@@ -1,0 +1,30 @@
+<% if shares.any? %>
+  <ul class="list-unstyled">
+    <% shares.each do |myshare| %>
+        <div class="media-body">
+            <div class="row">
+  <aside class="col-sm-2">
+        <% if myshare.user.avatar.attached? %>
+<%= image_tag(myshare.user.avatar, { size: 60 }) %>
+       <% end %>
+  </aside>
+            <div class="col-sm-10">
+              <div>
+            <%= myshare.title %>
+          </div>
+          <div class="row">
+          <div>
+            <%= myshare.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+          </div>
+
+    <% if current_user == myshare.user %>
+    <div class="ml-3 px-5">
+      <%= link_to 'このシェアリングを削除する', myshare, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } ,class: "btn btn-danger" %>
+      </div>
+    <% end %>
+              </div>
+        </div>
+                          </div>
+  </ul>
+<% end %>
+<% end %>

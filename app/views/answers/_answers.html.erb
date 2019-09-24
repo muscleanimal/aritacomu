@@ -1,16 +1,23 @@
+<h1>質問詳細ページ</h1>
 <ul class="list-unstyled">
   <% answers.each do |answer| %>
     <li class="media mb-3">
       <div class="media-body">
         <% if answer.info_id == info %>
-                <div>
-          <p><%= answer.id %></p>
-        </div>
+        <div class="container">
+          <div class="row">
+            <div class="m-2">
+        <% if answer.user.avatar.attached? %>
+<%= image_tag(answer.user.avatar, { size: 50 }) %>
+       <% end %>
+       </div>
+       <div>
+         <p>ユーザ名：<%= answer.user.name %></p>
+         </div>
+         </div>
         <div>
-          <p><%= answer.comment %></p>
+          <p>回答：<%= answer.comment %><p>
         </div>
-                <div>
-          <p><%= answer.info_id %></p>
         </div>
         <% end %>
       </div>

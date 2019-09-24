@@ -1,12 +1,12 @@
 <% if infos.any? %>
   <ul class="list-unstyled">
     <% infos.each do |myinfo| %>
-        <li class="media-body">
+        <div class="media-body">
             <div class="row">
   <aside class="col-sm-2">
-    <div>
-img
-    </div>
+        <% if myinfo.user.avatar.attached? %>
+<%= image_tag(myinfo.user.avatar, { size: 60 }) %>
+       <% end %>
   </aside>
             <div class="col-sm-10">
               <div>
@@ -14,7 +14,7 @@ img
           </div>
           <div class="row">
           <div>
-            <%= myinfo.created_at %>
+            <%= myinfo.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
           </div>
 
     <% if current_user == myinfo.user %>
@@ -22,10 +22,10 @@ img
       <%= link_to 'この質問を削除する', myinfo, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } ,class: "btn btn-danger" %>
       </div>
     <% end %>
-          <p>回答数:<%= answers %></p>
+          <p>回答数: <%= myinfo.answers.count %> </p>
               </div>
         </div>
-                          </li>
+                          </div>
   </ul>
 <% end %>
 <% end %>

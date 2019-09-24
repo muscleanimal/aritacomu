@@ -3,6 +3,9 @@
     <% faves.each do |myfave| %>
         <div class="media-body">
             <div class="row">
+        <% if myfave.work.avatar.attached? %>
+<%=link_to image_tag(myfave.work.avatar, { size: 50 }), work_path(myfave.work)%>
+       <% end %>
             <div>
             <p>作者名:<%= myfave.work.user.name %></p>
           </div>

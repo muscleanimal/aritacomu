@@ -1,0 +1,56 @@
+          <div>
+            <p>投稿者名:<%= @share.user.name %></p>
+          </div>
+            <div>
+            <p>タイトル:<%= @share.title %></p>
+          </div>
+            <div>
+            <%= @share.image %>
+          </div>
+          <div>
+            <p>作品説明:<%= @share.content %></p>
+          </div>
+          <p>作者プロフィール</p>
+<div class="row">
+  <aside class="col-sm-4">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title"><%= @share.user.name %></h3>
+      </div>
+      <div class="card-body">
+        <% if @share.avatar.attached? %>
+<%=link_to image_tag(@share.avatar, { size: 250 }), share_path(@share)%>
+       <% end %>
+      </div>
+    </div>
+  </aside>
+    <div class="col-sm-8">
+      <p>自己紹介:<%= @share.user.intro %></p>
+  </div>
+  </div>
+            <% if logged_in? %>
+
+    <% if current_user.share?(@share) %>
+          <button type = "button" >
+        <%= render 'links/link',  share: @share ,user: @share.user  %>
+        </button>
+        <div>
+  　     <%= link_to '情報やりとりページへ', discussion_share_path(@share) %></li>
+    </div>
+        <% elsif !current_user.share?(@share)&&@myshare.nil? == false %>
+      　マッチング済み。
+    <% elsif  @myshare.nil? == true %>
+              <button type = "button" >
+        <%= render 'links/link',  share: @share ,user: @share.user  %>
+        </button>
+        <% end %>
+    <% end %>
+
+    <% if current_user == @share.user&&@myshare.nil? == false %>  
+  　     <%= link_to '情報やりとりページへ', discussion_share_path(@share) %></li>
+    <% end %>
+    <% if current_user == @share.user %>
+    <div class="mt-10">
+      <%= link_to 'この投稿を削除する', @share, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } ,class: "btn btn-danger" %>
+      </div>
+    <% end %>

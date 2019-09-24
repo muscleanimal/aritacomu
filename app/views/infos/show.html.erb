@@ -1,16 +1,25 @@
+<h1>質問詳細ページ</h1>
+<h3>タイトル：<%= @info.title %></h3>
+<div class="container">
+  <div class="row">
+      <aside class="col-sm-2">
+        <% if @info.user.avatar.attached? %>
+<%= image_tag(@info.user.avatar, { size: 60 }) %>
+       <% end %>
+  </aside>
           <div>
-            <%= @info.user.name %>
+            <p>投稿者名：<%= @info.user.name %></p>
           </div>
-            <div>
-            <%= @info.title %>
-          </div>
+  </div>
+</div>
           
           <div>
-            <%= @info.content %>
+            <p>質問内容<br><%= @info.content %></p>
           </div>
+        <% if @info.avatar.attached? %>
+<%= image_tag(@info.avatar, { size: 500 }) %>
+       <% end %>
           <% if logged_in? %>
-  <div class="row">
-    <aside class="col-sm-4">
       <%= form_with(model: @answer, local: true) do |f| %>
         <div class="form-group">
           <%= f.text_area :comment, class: 'form-control', rows: 5 %>
@@ -18,9 +27,7 @@
               <%= hidden_field_tag :id, @info.id %>
         <%= f.submit '回答', class: 'btn btn-primary btn-block' %>
       <% end %>
-    </aside>
     <div class="col-sm-8">
       <%= render 'answers/answers', answers: @answers , info: @info.id %>
     </div>
-  </div>
   <% end %>

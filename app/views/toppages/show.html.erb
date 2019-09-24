@@ -1,9 +1,9 @@
 <h1>作品投稿サービストップページ</h1>
 <h3>作品一覧</h3>
-<% if works.any? %>
+<% if @works.any? %>
         <div class="container">
         <div class="row justify-content-between">
-    <% works.each do |work| %>
+    <% @works.each do |work| %>
               <div class="mt-4 col-md-4">
               <div class="card">
     <div class="card-header">

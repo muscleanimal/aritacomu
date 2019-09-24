@@ -1,0 +1,32 @@
+<h1>シェアリング投稿サービストップページ</h1>
+<h3>シェアリング一覧</h3>
+<% if shares.any? %>
+        <div class="container">
+        <div class="row justify-content-between">
+    <% shares.each do |share| %>
+              <div class="mt-4 col-md-4">
+              <div class="card">
+    <div class="card-header">
+        <% if share.avatar.attached? %>
+<%=link_to image_tag(share.avatar, { size: 250 }), share_path(share)%>
+       <% end %>
+    </div>
+    <div class="card-body">
+          <div class="mr-3">
+            <p>投稿者:<%= share.user.name %></p>
+          </div>
+            <div class="mr-3">
+            <p>タイトル:<%= share.title %></p>
+          </div>
+          <div class="mr-3">
+            <p>作品紹介文：<%= share.content %><p>
+          </div>
+        </div>
+      </div>
+      </div>
+    <% end %>
+          </div>
+      </div>
+<% end %>
+    <%= link_to 'シェアリング投稿', new_share_path %></li>
+    <p>!!注意、シェア主の都合でマッチングは予告なく取り消される場合があります‼！</p>

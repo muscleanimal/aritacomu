@@ -5,7 +5,9 @@
         <h3 class="card-title"><%= @user.name %></h3>
       </div>
       <div class="card-body">
-        <img class="rounded img-fluid" src="<%= gravatar_url(@user, { size: 500 }) %>" alt="">
+        <% if @user.avatar.attached? %>
+<%= image_tag(@user.avatar, { size: 300 }) %>
+       <% end %>
       </div>
     </div>
   </aside>
@@ -13,7 +15,7 @@
     <ul class="nav nav-tabs nav-justified mb-3">
       <li class="nav-item"><a href="<%= myworks_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(myworks_user_path(@user)) %>">投稿作品  <span class="badge badge-secondary"></span></a></li>
       <li class="nav-item"><a href="<%= myinfos_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(myinfos_user_path(@user)) %>">質問一覧  <span class="badge badge-secondary"></span></a></li>
-      <li class="nav-item"><a href="#" class="nav-link">シェアリング</a></li>
+      <li class="nav-item"><a href="<%= myshares_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(myshares_user_path(@user)) %>">投稿シェアリング  <span class="badge badge-secondary"></span></a></li>
       <li class="nav-item"><a href="<%= myfaves_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(myfaves_user_path(@user)) %>">お気に入り  <span class="badge badge-secondary"></span></a></li>
     </ul>
     <%= render 'favorites/myfaves', faves: @myfaves %>

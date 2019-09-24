@@ -14,7 +14,7 @@ class WorksController < ApplicationController
         @work = Work.find(params[:id])
     if logged_in?
       @mention = current_user.mentions.build  # form_with 用
-      @mentions = current_user.mentions.order(id: :desc).page(params[:page])
+      @mentions = @work.mentions.order(id: :desc).page(params[:page])
       
   end
   end
@@ -23,12 +23,11 @@ class WorksController < ApplicationController
     @work = current_user.works.build(work_params)
     if @work.save
       flash[:success] = '作品を投稿しました。'
-    redirect_to root_url
+    redirect_to works_url(@work.id)
     
     else
-      @works = current_user.works.order(id: :desc).page(params[:page])
       flash.now[:danger] = '作品の投稿に失敗しました。'
-      render 'toppages/index'
+      render :new
     end
   end
 
@@ -36,7 +35,7 @@ class WorksController < ApplicationController
     @work=Work.find(params[:id])
     @work.destroy
     flash[:success] = '投稿を削除しました。'
-    redirect_back(fallback_location: root_path)
+    redirect_to works_url(@work.id)
   end
 
   def likes
@@ -48,6 +47,6 @@ end
   private
 
   def work_params
-    params.require(:work).permit(:title, :image, :content)
+    params.require(:work).permit(:title, :image, :content, :avatar)
   end
 end

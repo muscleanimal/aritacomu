@@ -1,11 +1,11 @@
 <div class="text-center">
-  <h1>作品投稿</h1>
+  <h1>シェアリグ投稿</h1>
 </div>
-
+<p>!!注意、シェア主の都合でマッチングは予告なく取り消される場合があります‼！</p>
 <div class="row">
   <div class="col-sm-6 offset-sm-3">
 
-    <%= form_with(model: @work, local: true) do |f| %>
+    <%= form_with(model: @share, local: true) do |f| %>
       <%= render 'layouts/error_messages', model: f.object %>
       
       <div class="form-group">
@@ -14,7 +14,7 @@
       </div>
 
   <div>
-    <%= f.label :avatar,'作品画像' %>
+    <%= f.label :avatar,'投稿画像' %>
     <%= f.file_field :avatar %>
   </div>
 
@@ -23,7 +23,7 @@
         <%= f.text_field :content, class: 'form-control' %>
       </div>
 
-      <%= f.submit '投稿！', class: 'btn btn-primary btn-block' %>
+      <%= f.submit 'シェア投稿！', class: 'btn btn-primary btn-block' %>
     <% end %>
   </div>
 </div>

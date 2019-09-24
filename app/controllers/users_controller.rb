@@ -44,14 +44,23 @@ class UsersController < ApplicationController
     end
   end
 
+    def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:success] = '退会しました。'
+    redirect_back(fallback_location: root_path)
+  end
+
 def myinfos
       @user = User.find(params[:id])
   @myinfos = @user.infos.order(id: :desc).page(params[:page])
+
 end
 
 def myworks
       @user = User.find(params[:id])
   @myworks = @user.works.order(id: :desc).page(params[:page])
+  
 end
 
 def myfaves
@@ -59,9 +68,18 @@ def myfaves
   @myfaves = @user.favorites.order(id: :desc).page(params[:page])
 end
 
+def myshares
+      @user = User.find(params[:id])
+  @myshares = @user.shares.order(id: :desc).page(params[:page])
+end
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :intro, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :intro, :password, :password_confirmation, :avatar)
   end
 end
+
+  def counts(myinfo)
+    @count_info=myinfo.answers.count
+  end

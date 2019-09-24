@@ -1,0 +1,14 @@
+<h1>やりとりページ</h1>
+<h3>シェアリングタイトル：<%= @share.title %><h3>
+    <div class="col-sm-12">
+      <%= form_with(model: @comment , local: true) do |f| %>
+        <div class="form-group">
+          <%= f.text_area :comment, class: 'form-control', rows: 5 %>
+        </div>
+              <%= hidden_field_tag :id, @share.id %>
+        <%= f.submit 'コメント', class: 'btn btn-primary btn-block' %>
+      <% end %>
+    </div>
+        <div class="col-sm-8">
+      <%= render 'comments/comment', comments: @comments , share: @share.id %>
+    </div>

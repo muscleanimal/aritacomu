@@ -1,5 +1,4 @@
-<h1>作品投稿サービストップページ</h1>
-<h3>作品一覧</h3>
+<h3>最新作品一覧</h3>
 <% if works.any? %>
         <div class="container">
         <div class="row justify-content-between">
@@ -28,4 +27,9 @@
           </div>
       </div>
 <% end %>
-    <%= link_to '作品投稿', new_work_path %></li>
+<% if logged_in?%>
+        <div><%=link_to '作品一覧ページへ', works_path %></div>
+<% else %>
+        <div><%=link_to '作品一覧ページへ', toppage_path(@works) %></div>
+        <p>※作品はログインしなくてもご覧いただけます。</p>
+<% end %>

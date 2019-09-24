@@ -9,7 +9,7 @@ class AnswersController < ApplicationController
   @answer.info_id = info.id
   @answer.save
       flash[:success] = 'メッセージを投稿しました。'
-      redirect_to root_url
+      redirect_to info
     else
       @answers = current_user.answers.order(id: :desc).page(params[:page])
       flash.now[:danger] = 'メッセージの投稿に失敗しました。'

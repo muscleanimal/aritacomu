@@ -12,10 +12,10 @@
         <%= f.label :intro, '自己紹介' %>
         <%= f.text_field :intro, class: 'form-control' %>
       </div>
-      <div class="form-group">
-        <%= f.label :image, 'プロフ画像' %>
-        <%= f.text_field :image, class: 'form-control' %>
-      </div>
+  <div>
+    <%= f.label :avatar,'プロフ画像' %>
+    <%= f.file_field :avatar %>
+  </div>
 
       <%= f.submit '編集', class: 'btn btn-primary btn-block' %>
     <% end %>

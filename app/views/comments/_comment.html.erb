@@ -1,26 +1,24 @@
 <ul class="list-unstyled">
-  <% mentions.each do |mention| %>
+  <% comments.each do |comment| %>
     <li class="media mb-3">
       <div class="media-body">
         <div class="row">
-        <% if mention.work_id == work %>
                 <div class="container">
           <div class="row">
             <div class="m-2">
-        <% if mention.user.avatar.attached? %>
-<%= image_tag(mention.user.avatar, { size: 50 }) %>
+        <% if comment.user.avatar.attached? %>
+<%= image_tag(comment.user.avatar, { size: 50 }) %>
        <% end %>
        </div>
        <div>
-         <p>ユーザ名：<%= mention.user.name %></p>
+         <p>ユーザ名：<%= comment.user.name %></p>
          </div>
          </div>
         <div>
-          <p>回答：<%= mention.comment %><p>
+          <p>回答：<%= comment.comment %><p>
         </div>
         </div>
         <% end %>
       </div>
     </li>
-  <% end %>
 </ul>

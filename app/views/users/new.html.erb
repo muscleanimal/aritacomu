@@ -18,11 +18,10 @@
         <%= f.text_field :intro, class: 'form-control' %>
       </div>
 
-      <div class="form-group">
-        <%= f.label :image, 'プロフ画像' %>
-        <%= f.text_field :image, class: 'form-control' %>
-      </div>
-
+  <div>
+    <%= f.label :avatar,'プロフ画像' %>
+    <%= f.file_field :avatar %>
+  </div>
       <div class="form-group">
         <%= f.label :email, 'Email' %>
         <%= f.email_field :email, class: 'form-control' %>
